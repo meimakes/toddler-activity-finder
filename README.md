@@ -1,29 +1,10 @@
 # 🧸 Toddler Activity Finder 🧸
 
-```txt
-  _____              _       _      _                            
- |_   _|   ___    __| |   __| |    | |     ___      _ _          
-   | |    / _ \  / _` |  / _` |    | |    / -_)    | '_|         
-  _|_|_   \___/  \__,_|  \__,_|   _|_|_   \___|   _|_|_          
-_|"""""|_|"""""|_|"""""|_|"""""|_|"""""|_|"""""|_|"""""|         
-"`-0-0-'"`-0-0-'"`-0-0-'"`-0-0-'"`-0-0-'"`-0-0-'"`-0-0-'         
-   ___             _        _               _      _       _  _  
-  /   \    __     | |_     (_)    __ __    (_)    | |_    | || | 
-  | - |   / _|    |  _|    | |    \ V /    | |    |  _|    \_, | 
-  |_|_|   \__|_   _\__|   _|_|_   _\_/_   _|_|_   _\__|   _|__/  
-_|"""""|_|"""""|_|"""""|_|"""""|_|"""""|_|"""""|_|"""""|_| """"| 
-"`-0-0-'"`-0-0-'"`-0-0-'"`-0-0-'"`-0-0-'"`-0-0-'"`-0-0-'"`-0-0-' 
-    ___     _                _                                   
-   | __|   (_)    _ _     __| |    ___      _ _                  
-   | _|    | |   | ' \   / _` |   / -_)    | '_|                 
-  _|_|_   _|_|_  |_||_|  \__,_|   \___|   _|_|_                  
-_| """ |_|"""""|_|"""""|_|"""""|_|"""""|_|"""""|                 
-"`-0-0-'"`-0-0-'"`-0-0-'"`-0-0-'"`-0-0-'"`-0-0-'
-```
+The **ToddlerDo iOS App** is under development! Check out [ToddlerDo.com](https://ToddlerDo.com) for the latest updates.
 
 ## 📚 About This Project
 
-Visit [raisingpixels.dev/toddler-activity-finder](https://raisingpixels.dev/toddler-activity-finder/) to see the live site!
+Visit [meimakes.com/toddler-activity-finder/](https://meimakes.com/toddler-activity-finder/) to see the live site!
 
 The Toddler Activity Finder is an interactive tool to help parents, caregivers, and educators find perfect activities for toddlers aged 2-3 years. With an extensive database of developmentally appropriate activities, you can quickly filter by skill area, setup time, messiness level, and more to find just the right activity for your toddler's interests and your available time!
 
@@ -51,7 +32,7 @@ No installation required! This is a static website that runs entirely in the bro
 
 1. Clone the repository
    ```sh
-   git clone https://github.com/raisingpixels/toddler-activity-finder.git
+   git clone https://github.com/meimakes/toddler-activity-finder.git
    ```
 
 2. Open `index.html` in your browser
