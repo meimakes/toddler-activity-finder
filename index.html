@@ -1692,7 +1692,7 @@ body {
         <button type="submit" class="email-capture-btn" id="emailCaptureBtn">SUBSCRIBE</button>
       </form>
       <p class="email-capture-status" id="emailCaptureStatus" aria-live="polite"></p>
-      <p class="email-capture-fine">Delivered via <a href="https://raisingpixels.dev" target="_blank" rel="noopener noreferrer">Raising Pixels</a> on Substack</p>
+      <p class="email-capture-fine">Delivered via <a href="https://raisingpixels.dev" target="_blank" rel="noopener noreferrer">Raising Pixels</a></p>
     </div>
   </section>
   </div><!-- /cta-row -->
@@ -2005,9 +2005,9 @@ function toggleMobileFilters() {
 renderGrid();
 
 // ============================================================
-// EMAIL CAPTURE → Substack
+// EMAIL CAPTURE → Raising Pixels / Kit
 // ============================================================
-function handleEmailCapture(e) {
+async function handleEmailCapture(e) {
   e.preventDefault();
   const form = document.getElementById('emailCaptureForm');
   const btn = document.getElementById('emailCaptureBtn');
@@ -2020,53 +2020,31 @@ function handleEmailCapture(e) {
   status.textContent = '';
   status.className = 'email-capture-status';
 
-  // Create a hidden iframe to submit the Substack form
-  // This avoids CORS by loading a page on the Substack domain
-  const iframe = document.createElement('iframe');
-  iframe.style.display = 'none';
-  iframe.name = 'substack-capture-' + Date.now();
-  document.body.appendChild(iframe);
+  try {
+    const response = await fetch('https://raisingpixels.dev/api/subscribe', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        email,
+        source: 'toddlerlabs',
+        current_url: window.location.href,
+        current_referrer: document.referrer || ''
+      })
+    });
+    const payload = await response.json().catch(() => ({}));
+    if (!response.ok) throw new Error(payload.error || 'Something went wrong.');
 
-  // Create a form targeting the iframe
-  const proxyForm = document.createElement('form');
-  proxyForm.method = 'POST';
-  proxyForm.action = 'https://blog.raisingpixels.dev/api/v1/free';
-  proxyForm.target = iframe.name;
-  proxyForm.style.display = 'none';
-
-  const fields = {
-    email: email,
-    first_url: 'https://toddlerlabs.com/',
-    current_url: window.location.href,
-    current_referrer: document.referrer || '',
-    type: 'subscribe'
-  };
-  for (const [k, v] of Object.entries(fields)) {
-    const input = document.createElement('input');
-    input.type = 'hidden';
-    input.name = k;
-    input.value = v;
-    proxyForm.appendChild(input);
-  }
-
-  document.body.appendChild(proxyForm);
-  proxyForm.submit();
-
-  // We can't read the iframe response (cross-origin), so assume success after a delay
-  // Substack sends a confirmation email regardless
-  setTimeout(() => {
     status.textContent = 'You\'re in — check your inbox for a welcome email';
     status.className = 'email-capture-status success';
     btn.textContent = 'SUBSCRIBED';
     form.email.value = '';
-    // Track in Plausible
     if (window.plausible) plausible('Email Capture', { props: { source: 'toddlerlabs' } });
-    // Clean up
-    setTimeout(() => {
-      iframe.remove();
-      proxyForm.remove();
-    }, 5000);
-  }, 2000);
+  } catch (error) {
+    status.textContent = error.message || 'Something went wrong. Please try again.';
+    status.className = 'email-capture-status error';
+    btn.disabled = false;
+    btn.textContent = 'SUBSCRIBE';
+  }
 
   return false;
 }

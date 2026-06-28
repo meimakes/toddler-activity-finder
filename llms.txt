@@ -163,5 +163,5 @@ All activities include: age range (2-3), category, skill focus, messiness level,
 
 ## Related Resources
 - Build With Your Kid (ebook): 12 weeks of tech projects for toddlers — https://buildwithyourkid.com
-- Raising Pixels (Substack): Parenting + tech newsletter — https://raisingpixels.dev
+- Raising Pixels: Parenting + tech publication — https://raisingpixels.dev
 - GitHub: https://github.com/madebydia/toddlerlabs.com
